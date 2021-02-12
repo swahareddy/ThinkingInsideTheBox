@@ -6,20 +6,19 @@ GCP's DocumentAI already does a great job at extracting structured data, but the
 Inspired by these blogs:
  - https://towardsdatascience.com/a-table-detection-cell-recognition-and-text-extraction-algorithm-to-convert-tables-to-excel-files-902edcf289ec
 
-
 Notes:
 - C:/Users/swaha/AppData/Local/Programs/Python/Python39/python.exe -m pip install opencv-python
 
-### Questions for Ranadheer:
+### Questions for ythe team:
 - How do you distinguish between digital text and scanned PDFs
 - Is it okay to assume that a PDF that is digital is digital throughout and vice versa?
-- Does this distinguishing happen at page level or document level?
+- In your current pipeline are you breaking the PDF into a PDF per page? I can use those page PDFs itself then.
 - Is there too much time complexity right now?
-- If there is only a table in the page its possible, but how to know where to apply bounding boxes when the table is just one part of a whole page with rest of it being regular text
-- Current progress
 - Please share sample PDFs
-- How do you want the output, as a csv, df..? And any other metadata like spatial position?
+- What does the swiss method do about multiple tables in the same page
 
+### Things to do
+- OpenCV method forcefully makes one table in a page even when there are multiple tables.
 
 
 ## Conclusion

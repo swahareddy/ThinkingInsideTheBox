@@ -1,0 +1,8 @@
+opencv-python #cv2
+camelot
+pdfplumber
+pandas
+numpy
+matplotlib
+csv
+os

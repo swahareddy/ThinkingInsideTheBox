@@ -190,20 +190,24 @@ def find_tables_from_page_screenshot(screenshot_path): #Path without extension
     #Creating a dataframe of the generated OCR list
     arr = np.array(outer)
     dataframe = pd.DataFrame(arr.reshape(len(row), countcol))
-    print(dataframe)
     data = dataframe.style.set_properties(align="left")
     #Converting it in a excel-file
     data.to_excel(screenshot_path+".xlsx")
+    # print(dataframe)
+    return(dataframe)
 
 def find_boundingboxes_tables(input_filepath):
     from pdf2image import convert_from_path
     pages = convert_from_path(input_filepath, 500)
     page_no=1
     print("Number of pages - "+str(len(pages)))
+    dataframes_list=[]
     for page in pages:
         screenshot_path='opencv_output_files\\'+input_filepath[:-4].split('\\')[-1]+'_Pg'+str(page_no) #No extension added, that is appended within find_tables_from_page_screenshot function
         print(screenshot_path)
         page.save(screenshot_path+'.jpg', 'JPEG')
-        find_tables_from_page_screenshot(screenshot_path)
+        dataframe=find_tables_from_page_screenshot(screenshot_path)
+        dataframes_list.append(dataframe)
         os.remove(screenshot_path+'.jpg')
         page_no+=1
+    return(dataframes_list)
